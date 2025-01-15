@@ -1,0 +1,77 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "left"]
+    }
+  },
+  {
+    "context": "EmptyPane",
+    "bindings": {
+      "space x": "pane::CloseActiveItem",
+      "space f f": "file_finder::Toggle",
+      "space n": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space n": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "q": "workspace::ToggleLeftDock",
+      "p": "project_panel::Paste",
+      "y": "project_panel::Copy",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "d": ["project_panel::Trash", { "skip_prompt": false }],
+      "r": "project_panel::Rename",
+      "enter": ["workspace::SendKeystrokes", "enter q"]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-q": "pane::CloseActiveItem",
+      "ctrl-shift-t": "workspace::NewTerminal",
+      "alt-t": "workspace::ToggleBottomDock",
+      "ctrl-x": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space n": "pane::RevealInProjectPanel",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePrevItem",
+      "space x": "pane::CloseActiveItem",
+      "space f f": "file_finder::Toggle",
+      "space d d": "diagnostics::Deploy",
+      "space t": "workspace::ToggleBottomDock",
+      "alt-t": "workspace::ToggleBottomDock",
+      "ctrl-a": "editor::SelectAll",
+      "alt-k": "editor::MoveLineUp",
+      "alt-j": "editor::MoveLineDown",
+      "space f m": "editor::Format",
+      "space d l": "editor::GoToDiagnostic",
+      "space d h": "editor::GoToPrevDiagnostic",
+      "ctrl-j": ["workspace::SendKeystrokes", "5 j"],
+      "ctrl-k": ["workspace::SendKeystrokes", "5 k"]
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": ["vim::PushOperator", { "AddSurrounds": {} }]
+    }
+  }
+]

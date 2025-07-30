@@ -7,16 +7,13 @@
 // from the command palette.
 [
   {
+    "context": "EmptyPane || (Editor && vim_mode == normal)",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "left"]
-    }
-  },
-  {
-    "context": "EmptyPane",
-    "bindings": {
+      "space l g": ["task::Spawn", { "task_name": "Open Lazygit" }],
       "space x": "pane::CloseActiveItem",
       "space f f": "file_finder::Toggle",
-      "space n": "workspace::ToggleLeftDock"
+      "space n": "workspace::ToggleLeftDock",
+      "space g p": "git_panel::ToggleFocus"
     }
   },
   {
@@ -31,11 +28,18 @@
       "q": "workspace::ToggleLeftDock",
       "p": "project_panel::Paste",
       "y": "project_panel::Copy",
+      "x": "project_panel::Cut",
       "a": "project_panel::NewFile",
       "shift-a": "project_panel::NewDirectory",
       "d": ["project_panel::Trash", { "skip_prompt": false }],
       "r": "project_panel::Rename",
       "enter": ["workspace::SendKeystrokes", "enter q"]
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "q": "workspace::ToggleLeftDock"
     }
   },
   {
@@ -50,28 +54,55 @@
   {
     "context": "vim_mode == normal",
     "bindings": {
+      "space l g": ["task::Spawn", { "task_name": "Open Lazygit" }],
+      "alt-k": [
+        "workspace::SendKeystrokes",
+        ": movelineup enter : autoindent enter"
+      ],
+      "alt-j": [
+        "workspace::SendKeystrokes",
+        ": movelinedown enter : autoindent enter"
+      ],
       "space n": "pane::RevealInProjectPanel",
+      "space e": "workspace::ToggleLeftDock",
       "shift-l": "pane::ActivateNextItem",
-      "shift-h": "pane::ActivatePrevItem",
+      "shift-h": "pane::ActivatePreviousItem",
       "space x": "pane::CloseActiveItem",
       "space f f": "file_finder::Toggle",
       "space d d": "diagnostics::Deploy",
-      "space t": "workspace::ToggleBottomDock",
       "alt-t": "workspace::ToggleBottomDock",
       "ctrl-a": "editor::SelectAll",
-      "alt-k": "editor::MoveLineUp",
-      "alt-j": "editor::MoveLineDown",
+      "space r a": "editor::Rename",
       "space f m": "editor::Format",
       "space d l": "editor::GoToDiagnostic",
-      "space d h": "editor::GoToPrevDiagnostic",
+      "space d h": "editor::GoToPreviousDiagnostic",
       "ctrl-j": ["workspace::SendKeystrokes", "5 j"],
-      "ctrl-k": ["workspace::SendKeystrokes", "5 k"]
+      "ctrl-k": ["workspace::SendKeystrokes", "5 k"],
+      "ctrl-d": [
+        "workspace::SendKeystrokes",
+        ": vimscrolldown enter : scrollcursorcenter enter"
+      ],
+      "ctrl-u": [
+        "workspace::SendKeystrokes",
+        ": vimscrollup enter : scrollcursorcenter enter"
+      ]
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": ["vim::PushOperator", { "AddSurrounds": {} }]
+      "shift-s": ["vim::PushAddSurrounds", {}],
+      "alt-k": "editor::MoveLineUp",
+      "alt-j": "editor::MoveLineDown",
+      "p": ["vim::Paste", { "preserve_clipboard": true }],
+      "shift-p": "vim::Paste"
+    }
+  },
+  {
+    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    "bindings": {
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-h": "workspace::ActivatePaneLeft"
     }
   }
 ]

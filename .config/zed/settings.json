@@ -7,43 +7,52 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
-  "show_inline_completions": false,
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "show_edit_predictions": false,
   "ui_font_family": "Iosevka",
-  "assistant": {
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font"
+  },
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
-  "buffer_font_family": "JetBrainsMono Nerd Font",
   "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
   "theme": {
     "mode": "dark",
-    "light": "Rosé Pine Dawn",
-    "dark": "Catppuccin Mocha"
+    "light": "Catppuccin Latte",
+    "dark": "Rosé Pine"
   },
   "unnecessary_code_fade": 0.5,
   "enable_preview_from_file_finder": true,
   "format_on_save": "off",
   "tab_size": 4,
   "languages": {
-      "Haskell": {
-         "show_inline_completions": true
-      },
-      "JSONC": {
-        "tab_size": 2
-      }
+    "JSONC": {
+      "tab_size": 2
+    }
   },
   "lsp": {
     "discord_presence": {
       "initialization_options": {
         "idle": {
           "timeout": 7200 // Idle timeout in seconds
-        },
+        }
       }
     }
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
   }
 }

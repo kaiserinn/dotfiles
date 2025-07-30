@@ -1,10 +1,17 @@
-local opt = vim.opt
-local g = vim.g
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--------------------------------------- options ------------------------------------------
+local opt = vim.opt
+
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
-opt.clipboard = "unnamedplus" -- Sync with system clipboard 
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+vim.schedule(function()
+  opt.clipboard = "unnamedplus"
+end)
+
 opt.cursorline = true
 opt.pumheight = 10 -- Maximum number of items to show in the popup menu
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -14,12 +21,15 @@ opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "glob
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.smartindent = true
-opt.tabstop = 2
+opt.tabstop = 4
 opt.softtabstop = 2
 
 opt.fillchars = { eob = " " }
-opt.ignorecase = true
-opt.smartcase = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 opt.mouse = "a"
 
 -- Numbers
@@ -28,8 +38,8 @@ opt.numberwidth = 2
 opt.ruler = false
 opt.relativenumber = false
 
-opt.scrolloff = 10
-opt.sidescrolloff = 10
+opt.scrolloff = 5
+opt.sidescrolloff = 5
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -48,11 +58,9 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 -- opt.whichwrap:append "<>[]hl"
 
-g.mapleader = " "
-
 opt.breakindent = true
 
--- Set completeopt to have a better completion experience
-opt.completeopt = 'menuone,noselect,preview'
+-- Set completeopt to hiave a better completion experience
+opt.completeopt = "menuone,noselect,preview"
 
-
+opt.guicursor = "n-v-c-sm-i:block,ci-ve:ver25-Cursor,r-cr-o:hor20"

@@ -3,7 +3,7 @@ starship init fish | source
 set TREE_IGNORE "cache|log|logs|node_modules|vendor"
 zoxide init fish | source
 
-alias ls='eza --group-directories-first --icons'
+alias ls='exa --group-directories-first --icons'
 alias la='exa -a --icons'
 alias ll='exa --git -l --icons'
 alias lt='exa --tree -D -L 2 -I $TREE_IGNORE --icons'

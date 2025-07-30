@@ -3,7 +3,7 @@ return {
   version = "*",
   dependencies = 'nvim-tree/nvim-web-devicons',
   event = "VeryLazy",
-  enabled = false,
+  enabled = true,
   opts = function ()
     return {
       options = {
@@ -16,14 +16,6 @@ return {
         always_show_bufferline = false,
         show_buffer_icons = false,
         separator_style = {"", ""},
-        offsets = {
-          {
-            filetype = "NvimTree",
-            text = "File Explorer",
-            text_align = "left",
-            separator = true
-          }
-        }
       }
     }
   end,

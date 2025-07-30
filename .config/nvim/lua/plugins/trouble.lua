@@ -11,8 +11,8 @@ return {
       desc = "Trouble: Diagnostics",
     },
     {
-      "<leader>ct",
-      "<cmd>Trouble diagnostics focus filter.buf=0<cr>",
+      "<leader>tb",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       desc = "Trouble: Buffer Diagnostics",
     },
     {
@@ -26,12 +26,12 @@ return {
       desc = "Trouble: LSP Definitions / references / ...",
     },
     {
-      "<leader>xL",
+      "<leader>txL",
       "<cmd>Trouble loclist toggle<cr>",
       desc = "Trouble: Location List",
     },
     {
-      "<leader>xQ",
+      "<leader>txQ",
       "<cmd>Trouble qflist toggle<cr>",
       desc = "Trouble: Quickfix List",
     },

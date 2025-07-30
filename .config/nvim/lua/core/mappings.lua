@@ -1,5 +1,9 @@
-local nmap = function(mode, keys, func, desc)
-  vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
+local map = function(mode, keys, func, desc)
+  vim.keymap.set(mode, keys, func, {
+      noremap = true,
+      silent = true,
+      desc = "Core: " .. desc,
+  })
 end
 
 -- Modes
@@ -12,80 +16,78 @@ end
 
 -- Normal --
 -- Better window navigation
-nmap("n", "<C-h>", "<C-w>h", "Move to the window on the left.")
+-- nmap("n", "<C-h>", "<C-w>h", "Move to the window on the left.")
 -- nmap("n", "<C-j>", "<C-w>j", "Move to the window on the right.")
 -- nmap("n", "<C-k>", "<C-w>k", "Move to the window on the bottom.")
-nmap("n", "<C-l>", "<C-w>l", "Move to the window on the top.")
+-- nmap("n", "<C-l>", "<C-w>l", "Move to the window on the top.")
 
 -- Resize with arrows
-nmap("n", "<C-Up>", ":resize -2<CR>", "Resize current window's height by 2 lines up.")
-nmap("n", "<C-Down>", ":resize +2<CR>", "Resize current window's height by 2 lines down.")
-nmap("n", "<C-Left>", ":vertical resize +2<CR>", "Resize current window's width by 2 lines left.")
-nmap("n", "<C-Right>", ":vertical resize -2<CR>", "Resize current window's width by 2 lines right.")
+map("n", "<C-Up>", ":resize -2<CR>", "Resize current window's height by 2 lines up.")
+map("n", "<C-Down>", ":resize +2<CR>", "Resize current window's height by 2 lines down.")
+map("n", "<C-Left>", ":vertical resize +2<CR>", "Resize current window's width by 2 lines left.")
+map("n", "<C-Right>", ":vertical resize -2<CR>", "Resize current window's width by 2 lines right.")
 
 -- Navigate buffers
-nmap("n", "<S-l>", "<CMD>bnext<CR>", "Switch to the next buffer.")
-nmap("n", "<S-h>", "<CMD>bprevious<CR>", "Switch to the previous buffer.")
-nmap("n", "<leader>x", "<CMD>bdelete<CR>", "Close current buffer")
+map("n", "<S-l>", "<CMD>bnext<CR>", "Switch to the next buffer.")
+map("n", "<S-h>", "<CMD>bprevious<CR>", "Switch to the previous buffer.")
+map("n", "<leader>x", "<CMD>bdelete<CR>", "Close current buffer")
+map("n", "<leader>w", "<CMD>tabclose<CR>", "Close current tab")
 
 -- Move text up and down
-nmap("n", "<A-j>", ":m .+1<CR>==", "Move line down.")
-nmap("n", "<A-k>", ":m .-2<CR>==", "Move line up.")
+map("n", "<A-J>", ":m .+1<CR>==", "Move line down.")
+map("n", "<A-K>", ":m .-2<CR>==", "Move line up.")
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- LSPs
-nmap('n', '<space>f', vim.diagnostic.open_float, "Open diagnostic.")
+map('n', '<space>f', vim.diagnostic.open_float, "Open diagnostic.")
 -- nmap('n', '[d', vim.diagnostic.goto_prev, "Go to previous diagnostic")
 -- nmap('n', ']d', vim.diagnostic.goto_next, "Go to next diagnostic")
 -- nmap('n', '<space>q', vim.diagnostic.setloclist)
-nmap('i', '<C-m>', vim.lsp.buf.signature_help, "Open signature_help")
+map('i', '<C-m>', vim.lsp.buf.signature_help, "Open signature_help")
 
 -- Misc
-nmap('n', '<Esc>', ':noh <CR>', 'Clear highlights')
-nmap('n', '<C-j>', '5j', 'Move 5 lines down')
-nmap('n', '<C-k>', '5k', 'Move 5 lines up')
+map('n', '<Esc>', ':noh <CR>', 'Clear highlights')
+map('n', '<C-j>', '5j', 'Move 5 lines down')
+map('n', '<C-k>', '5k', 'Move 5 lines up')
 
-nmap('n', '<leader>z', ':q<CR>', 'Close current window')
-nmap('n', '<leader>v', ':vsplit<CR>', 'Split window vertically')
-nmap('n', '<leader>h', ':split<CR>', 'Split window horizontally')
+map('n', '<leader>z', ':q<CR>', 'Close current window')
+map('n', '<leader>sv', ':vsplit<CR>', 'Split window vertically')
+map('n', '<leader>sh', ':split<CR>', 'Split window horizontally')
 
 -- Insert --
--- Press jk fast to exit insert mode 
-nmap("i", "jk", "<ESC>", "Switch to insert mode.")
-nmap("i", "kj", "<ESC>", "Switch to insert mode.")
-
 -- Move around in insert mode
-nmap("i", "<C-k>", "<Up>", "Move up")
-nmap("i", "<C-l>", "<Right>", "Move right")
-nmap("i", "<C-j>", "<Down>", "Move down")
-nmap("i", "<C-h>", "<Left>", "Move left")
+map("i", "<C-k>", "<Up>", "Move up")
+map("i", "<C-l>", "<Right>", "Move right")
+map("i", "<C-j>", "<Down>", "Move down")
+map("i", "<C-h>", "<Left>", "Move left")
 
 -- Visual --
 -- Stay in indent mode
-nmap("v", "<", "<gv^", "Shift the selected text left, then reselect the visual block.")
-nmap("v", ">", ">gv^", "Shift the selected text right, then reselect the visual block.")
+map("v", "<", "<gv^", "Shift the selected text left, then reselect the visual block.")
+map("v", ">", ">gv^", "Shift the selected text right, then reselect the visual block.")
+
+map("v", '<C-j>', '5j', 'Move 5 lines down')
+map("v", '<C-k>', '5k', 'Move 5 lines up')
 
 -- Move text up and down
-nmap("v", "<A-j>", ":m '>+1<CR>gv=gv", "Move line down.")
-nmap("v", "<A-k>", ":m '<-2<CR>gv=gv", "Move line up.")
-nmap("v", "p", '"_dP', "Paste the yanked text, replacing the selected text.")
+map("v", "<A-J>", ":m '>+1<CR>gv=gv", "Move line down.")
+map("v", "<A-K>", ":m '<-2<CR>gv=gv", "Move line up.")
+map("v", "p", '"_dP', "Paste the yanked text, replacing the selected text.")
 
 -- Visual Block --
 -- Move text up and down
-nmap("x", "J", ":m '>+1<CR>gv=gv", "Move line down.")
-nmap("x", "K", ":m '<-2<CR>gv=gv", "Move line up.")
-nmap("x", "<A-j>", ":m '>+1<CR>gv=gv", "Move line down.")
-nmap("x", "<A-k>", ":m '<-2<CR>gv=gv", "Move line up.")
+map("x", "<A-J>", ":m '>+1<CR>gv=gv", "Move line down.")
+map("x", "<A-K>", ":m '<-2<CR>gv=gv", "Move line up.")
 
 -- Delete & Yank extras
-nmap({"n", "v"}, "d", "\"_d", "Delete without yanking")
-nmap("v", "p", "\"_dP", "Replace-paste without yanking")
+map({"n", "v"}, "d", "\"_d", "Delete without yanking")
+map("v", "p", "\"_dP", "Replace-paste without yanking")
 
 -- Save File
-nmap({"n", "s"}, "<C-s>", ":w<CR>", "Save current file")
+map({"n", "s"}, "<C-s>", ":w<CR>", "Save current file")
 
 -- Select All
-nmap("n", "<C-A>", "ggVG", "Select all")
+map("n", "<C-A>", "ggVG", "Select all")

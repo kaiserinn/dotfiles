@@ -42,6 +42,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- LSPs
+map("n", "<S-k>", function() vim.lsp.buf.hover({ border = "rounded" }) end, "")
 map('n', '<space>f', vim.diagnostic.open_float, "Open diagnostic.")
 -- nmap('n', '[d', vim.diagnostic.goto_prev, "Go to previous diagnostic")
 -- nmap('n', ']d', vim.diagnostic.goto_next, "Go to next diagnostic")

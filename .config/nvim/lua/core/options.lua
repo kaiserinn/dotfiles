@@ -60,7 +60,11 @@ opt.updatetime = 250
 
 opt.breakindent = true
 
--- Set completeopt to hiave a better completion experience
+-- Set completeopt to have a better completion experience
 opt.completeopt = "menuone,noselect,preview"
 
+-- change insert cursor
 opt.guicursor = "n-v-c-sm-i:block,ci-ve:ver25-Cursor,r-cr-o:hor20"
+
+-- borders for lsp hover, diagnostics, etc.
+vim.opt.winborder = "none"

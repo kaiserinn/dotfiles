@@ -26,7 +26,6 @@
     gcc
     firefox
     kitty
-    unstable.jujutsu
     unstable.jjui
     yadm
     zellij

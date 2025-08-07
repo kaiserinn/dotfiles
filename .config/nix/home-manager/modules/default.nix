@@ -1,7 +1,8 @@
 {
   imports = [
+    ./terminal
     ./neovim.nix
     ./git.nix
-    ./terminal
+    ./jujutsu.nix
   ];
 }

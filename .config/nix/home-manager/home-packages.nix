@@ -53,5 +53,6 @@
     # dev
     bun
     zig
+    mycli
   ];
 }

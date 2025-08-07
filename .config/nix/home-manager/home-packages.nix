@@ -51,5 +51,7 @@
     jq
     cliphist
     discord
+
+    devenv
   ];
 }

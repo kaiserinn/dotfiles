@@ -5,5 +5,6 @@
       PasswordAuthentication = false;
       PermitRootLogin = "yes";
     };
+    openFirewall = true;
   };
 }

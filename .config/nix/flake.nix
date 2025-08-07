@@ -17,8 +17,10 @@
   }: let
     system = "x86_64-linux";
     user = "azhar";
+    host = "station48";
+    unstable = nixpkgs-unstable.legacyPackages.${system}; 
   in {
-    nixosConfigurations.station48 = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [./nixos/configuration.nix];
     };
@@ -29,7 +31,7 @@
         ./home-manager/home.nix
       ];
       extraSpecialArgs = {
-        unstable = nixpkgs-unstable.legacyPackages.${system};
+        inherit unstable;
       };
     };
   };

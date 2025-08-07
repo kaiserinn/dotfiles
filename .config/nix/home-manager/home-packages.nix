@@ -22,8 +22,6 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    fish
-    starship
     git
     gcc
     firefox
@@ -35,11 +33,11 @@
     yazi
     waybar
     dunst
-    zoxide
     ripgrep
     fd
     eza
     bat
+    fzf
     rofi-wayland
     tldr
     hyprpaper
@@ -52,6 +50,8 @@
     cliphist
     discord
 
-    devenv
+    # dev
+    bun
+    zig
   ];
 }

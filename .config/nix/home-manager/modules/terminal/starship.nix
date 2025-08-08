@@ -5,7 +5,7 @@
 
     settings = {
       format = ''
-        $username[❯](#02D0A9) $directory$git_branch
+        $username[❯](#02D0A9) $directory$git_branch$nix_shell
         $character
       '';
 
@@ -17,7 +17,8 @@
       };
 
       directory = {
-        truncation_length = 1;
+        # truncation_length = 1;
+        fish_style_pwd_dir_length = 1;
         style = "#02D0A9";
       };
 

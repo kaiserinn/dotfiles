@@ -7,6 +7,11 @@
     ./modules
   ];
 
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.

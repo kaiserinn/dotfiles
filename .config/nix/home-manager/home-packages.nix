@@ -48,6 +48,7 @@
     jq
     cliphist
     discord
+    btop
 
     # dev
     bun

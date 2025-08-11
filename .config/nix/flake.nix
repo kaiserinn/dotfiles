@@ -18,21 +18,24 @@
     system = "x86_64-linux";
     user = "azhar";
     host = "station48";
-    unstable = nixpkgs-unstable.legacyPackages.${system}; 
+    unstable = nixpkgs-unstable.legacyPackages.${system};
   in {
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       inherit system;
-      modules = [./nixos/configuration.nix];
-    };
-
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
       modules = [
-        ./home-manager/home.nix
+        ./nixos/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${user} = ./home-manager/home.nix;
+            extraSpecialArgs = {
+              inherit unstable;
+            };
+          };
+        }
       ];
-      extraSpecialArgs = {
-        inherit unstable;
-      };
     };
   };
 }

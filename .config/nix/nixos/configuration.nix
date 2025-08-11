@@ -53,6 +53,7 @@
 
   services.flatpak.enable = true;
   services.cloudflare-warp.enable = true;
+  services.displayManager.gdm.enable = true;
 
   programs.hyprland.enable = true;
   programs.fish.enable = true;

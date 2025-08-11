@@ -12,6 +12,8 @@
     blueman
     unzip
     zip
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
   ];
 
   fonts.packages = with pkgs; [

@@ -4,9 +4,8 @@
 
     package = pkgs.capitaine-cursors;
 
-    size = 32;
-
     gtk.enable = true;
     hyprcursor.enable = true;
+    hyprcursor.size = 32;
   };
 }

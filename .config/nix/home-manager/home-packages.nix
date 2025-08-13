@@ -1,6 +1,6 @@
 {
   pkgs,
-  unstable,
+  inputs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -24,7 +24,7 @@
     gcc
     firefox
     kitty
-    unstable.jjui
+    jjui
     yadm
     zellij
     yazi
@@ -48,6 +48,9 @@
     discord
     btop
     nh
+    vlc
+
+    inputs.kintsugi.packages.${pkgs.system}.default
 
     # dev
     bun

@@ -1,12 +1,15 @@
 {
   pkgs,
-  unstable,
   ...
 }: {
+  home.file.".config/nvim" = {
+    source = ./nvim;
+    recursive = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = unstable.neovim-unwrapped;
     extraPackages = with pkgs; [
       # Tools
       nodejs_24

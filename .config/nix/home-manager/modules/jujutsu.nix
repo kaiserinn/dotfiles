@@ -1,7 +1,6 @@
-{unstable, ...}: {
+{
   programs.jujutsu = {
     enable = true;
-    package = unstable.jujutsu;
     settings = {
       user = {
         name = "Azhar Rizqullah";

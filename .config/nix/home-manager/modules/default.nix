@@ -1,9 +1,12 @@
 {
   imports = [
     ./terminal
-    ./neovim.nix
+    ./neovim
+    ./hypr
+    ./kitty
     ./git.nix
     ./jujutsu.nix
     ./cursor.nix
+    ./stylix.nix
   ];
 }
